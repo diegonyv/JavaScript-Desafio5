@@ -1,245 +1,186 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/style/styleMobile.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/style/style.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
     <title>Desafío</title>
-    
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-      <h1>Ecommerce</h1>
-      <div class="boton">
-        <i class="fa-solid fa-bars-staggered" style="font-size: x-large;"></i>  
+    <!-- Problema 1: Borde Rojo -->
+
+    <section>
+      <img
+        class="fotoPlayaQuitasol"
+        src="./assets/imgs/Reel (1).jpg"
+        alt="FotoPlayaQuitasol"
+        id="fotoPlayaQuitasol"
+        style="border: none"
+        onclick="
+          const border = document.querySelector('#fotoPlayaQuitasol');
+          if (border.style.border == 'none') {
+            border.style.border = '2px solid red';
+            border.style.padding = '0px';
+          } else if (border.style.border == '2px solid red') {
+            border.style.border = 'none';
+            border.style.padding = '2px';
+          }
+          "
+      />
+    </section>
+    <!-- FIN Problema 1: Borde Rojo -->
+     
+    <!-- Problema 2: Input Stickers -->
+    <!-- 
+      Se debe construir una página web que permita pedir hasta 10 stickers de los 3 tipos
+disponibles. Para eso deberá existir un input debajo de cada imagen donde el
+usuario podrá ingresar un número. En caso de que la suma de todos los stickers
+seleccionados sea menor o igual 10 se indicará en un párrafo nuevo la cantidad de
+stickers llevados. Ejemplo "llevas 5 stickers" en cualquier otro caso se mostrará un
+texto que dice "Llevas demasiados stickers". -->
+
+    <section>
+      
+      <div class="par">
+        <p>Puedes llevar hasta 10 Stickers en total</p>
       </div>
 
-      <div class="nav-botones">
-        <a>Inicio</a>
+      <div class="stickerDiv">
+        <div class="inputDiv" >
+          <img class="sticker" src="./assets/imgs/sticker (1).jpg" alt="" />
+          <input id="num1" type="number" />
+        </div class="inputDiv">
+        <div class="inputDiv">
+          <img class="sticker" src="./assets/imgs/sticker (2).jpg" alt="" />
+          <input id="num2" type="number" />
+        </div class="inputDiv">
+        <div class="inputDiv">
+          <img class="sticker" src="./assets/imgs/sticker (3).jpg" alt="" />
+          <input id="num3" type="number" />
+        </div class="inputDiv">
+      </div>
       
-        <a>Catálogo</a>
-     
-        <a>Envíos</a>
+      <div>
+        <p id="response" class="responseBase">Elige tus Stickers</p>
+      </div>
+
+      <div class="buttonDiv">
+        <button 
+          class="boton"
+          onclick="
+          
+          const num1= Number(document.querySelector('#num1').value)
+          const num2= Number(document.querySelector('#num2').value)
+          const num3= Number(document.querySelector('#num3').value)
+          const countGlobal= num1 + num2 + num3
+          
+          responseBase = document.querySelector('#response').textContent
+          
+          if (countGlobal <= 10) {
+            
+            responseCurrent = ('Llevas' + ' ' + (countGlobal) + ' ' + 'Stickers')
+            response.innerHTML = responseCurrent
+          } else {
+            responseCurrent = 'Llevas demasiados Stickers'
+            response.innerHTML = responseCurrent
+          }
+
+          console.log(responseCurrent)
+          "  
+        >
+          Verificar
+        </button>
+      </div>
+    </section>
     
-        <a>Contacto</a>
-      </div>    
+    <!-- FIN Problema 2: Input Stickers -->
+
+    <section class="selectBox">
+
+      <div class="passwordInPar">
+        <p>Ingresa el Password</p>
+      </div>
+
+      <div class="passwordSel">
+
+        <select name="numero1" id="pass1">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+        <select name="numero2" id="pass2">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+        <select name="numero3" id="pass3">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+
+      </div >
+
       
-    </nav>
-    <!-- FIN Navbar -->
-
-    <!-- Filtros -->
-    <section class="filtros">
-     
-    <h5>Ordenar por</h4>
-      <select class="form-control form-control-sm">
-  <option>Precio</option>
-  <option>Categoría</option>
-  <option>Stock</option>
-  <option>Marca</option>
-</select>
-
-</section>
-    <!-- FIN Filtros -->
-
-  <!-- Grilla de Productos -->
-  <main class="grilla-productos">
-    <div class="caja-pr">
-      <img src="./assets/imgs/Producto (1).jpg" alt="" />
-      <h4>Moongels batería</h4>
-      <h6>$4500</h6>
-      <button class="btn btn-primary">Comprar</button>
-    </div>
-      
-    <div class="caja-pr">
-        <img src="./assets/imgs/Producto (2).jpg" alt="" />
-        <h4>Moongels batería</h4>
-        <h6>$4500</h6>
-        <button class="btn btn-primary">Comprar</button>
-     </div>
-        
-    <div class="caja-pr">
-          <img src="./assets/imgs/Producto (3).jpg" alt="" />
-          <h4>Moongels batería</h4>
-          <h6>$4500</h6>
-          <button class="btn btn-primary">Comprar</button>
-    </div>
+      <div class="buttonDiv2">
+        <button 
+        class="boton"
+        onclick="
+          const password1 = 911
+          const password2 = 714
+          const pass1 = document.querySelector('#pass1').value
+          const pass2 = document.querySelector('#pass2').value
+          const pass3 = document.querySelector('#pass3').value
+          let passwordIn = Number(pass1 + pass2 + pass3)
           
-    <div class="caja-pr">
-            <img src="./assets/imgs/Producto (4).jpg" alt="" />
-            <h4>Moongels batería</h4>
-            <h6>$4500</h6>
-            <button class="btn btn-primary">Comprar</button c>
-    </div>
-            
-    <div class="caja-pr">
-              <img src="./assets/imgs/Producto (5).jpg" alt="" />
-              <h4>Moongels batería</h4>
-              <h6>$4500</h6>
-              <button class="btn btn-primary">Comprar</button>
-    </div>
-              
-    <div class="caja-pr">
-                <img src="./assets/imgs/Producto (6).jpg" alt="" />
-                <h4>Moongels batería</h4>
-                <h6>$4500</h6>
-                <button class="btn btn-primary">Comprar</button>
-    </div>
-      
-    <div class="caja-pr">
-        <img src="./assets/imgs/Producto (4).jpg" alt="" />
-        <h4>Moongels batería</h4>
-        <h6>$4500</h6>
-        <button class="btn btn-primary">Comprar</button>
-    </div>
-      
-    <div class="caja-pr">
-        <img src="./assets/imgs/Producto (2).jpg" alt="" />
-        <h4>Moongels batería</h4>
-        <h6>$4500</h6>
-        <button class="btn btn-primary">Comprar</button>
-    </div>
-      
-    <div class="caja-pr">
-        <img src="./assets/imgs/Producto (5).jpg" alt="" />
-        <h4>Moongels batería</h4>
-        <h6>$4500</h6>
-        <button class="btn btn-primary">Comprar</button>
-    </div>
-      
-      <div class="caja-pr">
-        <img src="./assets/imgs/Producto (1).jpg" alt="" />
-        <h4>Moongels batería</h4>
-        <h6>$4500</h6>
-        <button class="btn btn-primary">Comprar</button>
-    </div>
-      
-    <div class="caja-pr">
-        <img src="./assets/imgs/Producto (3).jpg" alt="" />
-        <h4>Moongels batería</h4>
-        <h6>$4500</h6>
-        <button class="btn btn-primary">Comprar</button>
-    </div>
-        
-    <div class="caja-pr">
-          <img src="./assets/imgs/Producto (2).jpg" alt="" />
-          <h4>Moongels batería</h4>
-          <h6>$4500</h6>
-          <button class="btn btn-primary">Comprar</button>
-      </div>
+                
+          let admission = document.querySelector('#admission')
           
-      <div class="caja-pr">
-            <img src="./assets/imgs/Producto (3).jpg" alt="" />
-            <h4>Moongels batería</h4>
-            <h6>$4500</h6>
-            <button class="btn btn-primary">Comprar</button>
-      </div>
-            
-      <div class="caja-pr">
-              <img src="./assets/imgs/Producto (5).jpg" alt="" />
-              <h4>Moongels batería</h4>
-              <h6>$4500</h6>
-              <button class="btn btn-primary">Comprar</button>
-      </div>
-              
-      <div class="caja-pr">
-                <img src="./assets/imgs/Producto (6).jpg" alt="" />
-                <h4>Moongels batería</h4>
-                <h6>$4500</h6>
-                <button class="btn btn-primary">Comprar</button>
-      </div>
-                
-      <div class="caja-pr">
-                  <img src="./assets/imgs/Producto (2).jpg" alt="" />
-                  <h4>Moongels batería</h4>
-                  <h6>$4500</h6>
-                  <button class="btn btn-primary">Comprar</button>
-      </div>
-                
-      <div class="caja-pr">
-                  <img src="./assets/imgs/Producto (4).jpg" alt="" />
-                  <h4>Moongels batería</h4>
-                  <h6>$4500</h6>
-                  <button class="btn btn-primary">Comprar</button>
-      </div>
-                
-      <div class="caja-pr">
-                  <img src="./assets/imgs/Producto (1).jpg" alt="" />
-                  <h4>Moongels batería</h4>
-                  <h6>$4500</h6>
-                  <button class="btn btn-primary">Comprar</button>
-      </div>
-
-          <div class="caja-pr">
-        <img src="./assets/imgs/Producto (3).jpg" alt="" />
-        <h4>Moongels batería</h4>
-        <h6>$4500</h6>
-        <button class="btn btn-primary">Comprar</button>
-    </div>
-        
-    <div class="caja-pr">
-          <img src="./assets/imgs/Producto (2).jpg" alt="" />
-          <h4>Moongels batería</h4>
-          <h6>$4500</h6>
-          <button class="btn btn-primary">Comprar</button>
-      </div>
+          if (passwordIn == password1) {
+            admission.innerHTML = 'Password 1 Correcto'
+          } else if (passwordIn == password2) {
+            admission.innerHTML = 'Password 2 Correcto'
+          } else {
+            admission.innerHTML = 'Password Incorrecto'
+          }
           
-      <div class="caja-pr">
-            <img src="./assets/imgs/Producto (3).jpg" alt="" />
-            <h4>Moongels batería</h4>
-            <h6>$4500</h6>
-            <button class="btn btn-primary">Comprar</button>
-      </div>
-            
-      <div class="caja-pr">
-              <img src="./assets/imgs/Producto (5).jpg" alt="" />
-              <h4>Moongels batería</h4>
-              <h6>$4500</h6>
-              <button class="btn btn-primary">Comprar</button>
-      </div>
-              
-      <div class="caja-pr">
-                <img src="./assets/imgs/Producto (6).jpg" alt="" />
-                <h4>Moongels batería</h4>
-                <h6>$4500</h6>
-                <button class="btn btn-primary">Comprar</button>
-      </div>
-                
-      <div class="caja-pr">
-                  <img src="./assets/imgs/Producto (2).jpg" alt="" />
-                  <h4>Moongels batería</h4>
-                  <h6>$4500</h6>
-                  <button class="btn btn-primary">Comprar</button>
-      </div>
-                
-      <div class="caja-pr">
-                  <img src="./assets/imgs/Producto (4).jpg" alt="" />
-                  <h4>Moongels batería</h4>
-                  <h6>$4500</h6>
-                  <button class="btn btn-primary">Comprar</button>
-      </div>
-                
-      <div class="caja-pr">
-                  <img src="./assets/imgs/Producto (1).jpg" alt="" />
-                  <h4>Moongels batería</h4>
-                  <h6>$4500</h6>
-                  <button class="btn btn-primary">Comprar</button>
-      </div>
-    </main>
-                <!-- FIN Grilla de Productos -->
-                
-                
-                <!-- Footer -->
-<footer class="piepag">
-     
-<p>Ecommerce</p>
+          
 
- </footer>
-                <!-- FIN FOOTER -->
-<script src="https://kit.fontawesome.com/9cb3e22ca5.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
-</html>
+          "
+          >
+          Ingresar
+        </button>
+        
+        <div class="passDiv">
+          <p id="admission"></p>
+        </div>
+        
+      </div>
+      
 
-              
+    </section>
+      
+      <!-- Problema 3:  -->
+    </body>
+    </html>
+    
